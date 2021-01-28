@@ -17,7 +17,7 @@ services:
     env_file:
       - .env
     ports:
-      - 8003:8000
+      - $BACK_END_PORT:$BACK_END_PORT
     command: >
       sh -c "python main.py"
     restart: always
