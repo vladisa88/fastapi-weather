@@ -1,0 +1,13 @@
+### Project ###
+## Directories
+*.idea
+*.vscode
+*.pytest_cache
+__pycache__
+
+## Files
+.DS_Store
+*.sqlite3
+*.pyc
+*.pid
+.env
