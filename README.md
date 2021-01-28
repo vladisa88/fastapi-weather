@@ -1,4 +1,6 @@
 # Fast-API Weather
+
+![](https://www.code-inspector.com/project/18375/score/svg)
 ## Simple application providing information about weather in your favourite cities
 
 ### Features:
