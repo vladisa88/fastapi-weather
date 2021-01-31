@@ -8,6 +8,7 @@
 * Oauth2 authorization
 * Dockerized
 * Fully async
+* Aerich migrations
 
 ### To use in on your device:
 ```git clone https://github.com/vladisa88/fastapi-weather.git```
