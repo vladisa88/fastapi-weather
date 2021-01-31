@@ -1,6 +1,6 @@
 # Fast-API Weather
 
-![](https://www.code-inspector.com/project/18375/score/svg)
+![](https://www.code-inspector.com/project/18375/score/svg?service=github)
 ## Simple application providing information about weather in your favourite cities
 
 ### Features:
