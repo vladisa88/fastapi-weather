@@ -9,7 +9,8 @@ class Settings(BaseSettings):
     DB_HOST: str = os.environ.get('POSTGRES_HOST')
     DB_PORT: str = os.environ.get('POSTGRES_PORT')
     DATABASE_NAME: str = os.environ.get('POSTGRES_DB')
-    DATABASE_URL: str = f'postgres://{USER}:{PASSWORD}@{DB_HOST}:{DB_PORT}/{DATABASE_NAME}'
+    DATABASE_URL: str = f'postgres://{USER}:{PASSWORD}@{DB_HOST}:'\
+                        f'{DB_PORT}/{DATABASE_NAME}'
     SECRET_KEY: str = os.environ.get('SECRET_KEY')
     APP_NAME: str = 'Weather App'
     REGISTRATION_TOKEN_LIFETIME: int = 60 * 60

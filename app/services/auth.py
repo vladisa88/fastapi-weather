@@ -52,7 +52,10 @@ class Auth:
         }
 
     @staticmethod
-    async def authenticate_user(email: str, password: str) -> UserModel or False:
+    async def authenticate_user(
+        email: str,
+        password: str
+    ) -> UserModel or False:
         user = await UserModel.get(email=email)
 
         if not user:
@@ -64,7 +67,10 @@ class Auth:
         return user
 
     @staticmethod
-    async def get_current_user(token: str = Depends(oauth2_scheme)) -> UserModel:
+    async def get_current_user(
+        token: str = Depends(oauth2_scheme)
+    ) -> UserModel:
+        # pylint:disable=(raise-missing-from)
         try:
             payload = jwt.decode(
                 token=token,
@@ -74,8 +80,8 @@ class Auth:
             user = await UserModel.get(id=payload.get('id'))
         except:
             raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED, 
+                status_code=status.HTTP_401_UNAUTHORIZED,
                 detail='Invalid username or password'
             )
-        
+
         return await User_Pydantic.from_tortoise_orm(user)

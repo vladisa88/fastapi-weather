@@ -6,7 +6,6 @@ from pydantic import BaseModel
 from models.cities import CreateCity
 from config.settings import get_settings
 
-from services.weather import get_current_weather
 
 settings = get_settings()
 
@@ -18,7 +17,6 @@ class Profile(models.Model):
 
     class PydanticMeta:
         exclude = (
-            'id',
             'user.email',
             'user.hashed_password',
             'user.is_active',

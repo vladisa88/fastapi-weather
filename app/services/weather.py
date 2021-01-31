@@ -1,17 +1,16 @@
 import os
-import asyncio
 import aiohttp
 
 import pytemperature
 
 
 token = os.environ.get('OPEN_WEATHER_API_KEY')
-base_url = 'https://api.openweathermap.org/data/2.5/' \
+BASE_URL = 'https://api.openweathermap.org/data/2.5/' \
             'weather?q={city}&appid={token}'
 
 
 async def get_current_weather(city: str) -> str:
-    url = base_url.format(
+    url = BASE_URL.format(
         city=city,
         token=token
     )

@@ -1,5 +1,3 @@
-import asyncio
-
 from fastapi import APIRouter
 
 from models.cities import City, City_Pydantic, CreateCity, City_Pydantic_List

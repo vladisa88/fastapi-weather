@@ -11,8 +11,10 @@ user_router = APIRouter()
 
 @user_router.get('/users')
 async def get_users(email: tp.Optional[str] = None):
+    # pylint:disable=(unsubscriptable-object)
     if email:
-        return await users.User_Pydantic.from_queryset_single(users.UserModel.get(email=email))
+        return await users.User_Pydantic.from_queryset_single(
+            users.UserModel.get(email=email))
     users_obj = await users.UserModel.all()
     for user in users_obj:
         print(user.id)
