@@ -87,19 +87,19 @@ async def generate_token(form_data: OAuth2PasswordRequestForm = Depends()):
     return {'access_token' : token, 'token_type' : 'bearer'}
 
 
-@auth_router.post('/login')
-async def login(auth_data: LoginModel):
-    user = await Auth.authenticate_user(
-        auth_data.email,
-        auth_data.password
-    )
-    if not user:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail='Invalid username or password'
-        )
-    user_obj = await users.User_Pydantic.from_tortoise_orm(user)
-    to_encode = user_obj.dict()
-    to_encode['id'] = str(to_encode.get('id'))
-    token = Auth.get_token(to_encode, settings.REGISTRATION_TOKEN_LIFETIME)
-    return {'access_token' : token, 'token_type' : 'bearer'}
+# @auth_router.post('/login')
+# async def login(auth_data: LoginModel):
+#     user = await Auth.authenticate_user(
+#         auth_data.email,
+#         auth_data.password
+#     )
+#     if not user:
+#         raise HTTPException(
+#             status_code=status.HTTP_401_UNAUTHORIZED,
+#             detail='Invalid username or password'
+#         )
+#     user_obj = await users.User_Pydantic.from_tortoise_orm(user)
+#     to_encode = user_obj.dict()
+#     to_encode['id'] = str(to_encode.get('id'))
+#     token = Auth.get_token(to_encode, settings.REGISTRATION_TOKEN_LIFETIME)
+#     return {'access_token' : token, 'token_type' : 'bearer'}
