@@ -19,6 +19,8 @@ uvicorn = "*"
 aiohttp = "*"
 pytemperature = "*"
 python-multipart = "*"
+pylint = "*"
+pylint-django = "*"
 
 [requires]
 python_version = "3.9"

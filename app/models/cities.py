@@ -1,7 +1,8 @@
 import asyncio
 
 from tortoise import fields, models, Tortoise
-from tortoise.contrib.pydantic import pydantic_model_creator, pydantic_queryset_creator
+from tortoise.contrib.pydantic import (pydantic_model_creator,
+                                       pydantic_queryset_creator)
 
 from pydantic import BaseModel
 

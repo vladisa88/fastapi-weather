@@ -2,7 +2,6 @@ from jose import jwt
 
 from fastapi import (
     APIRouter,
-    Body,
     HTTPException,
     status,
     Depends
@@ -41,12 +40,17 @@ async def register(form_data: users.CreateUser):
 
 @auth_router.get('/verify/{token}')
 async def verify(token: str):
-    invalid_token_error = HTTPException(status_code=400, detail="Invalid token")
+    # pylint:disable=(raise-missing-from)
+    invalid_token_error = HTTPException(status_code=400, detail='Invalid token')
     print(token)
     try:
-        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=settings.TOKEN_ALGORITHM)
-    except jwt.JWTError as error:
-        raise HTTPException(status_code=403, detail="Token has expired")
+        payload = jwt.decode(
+            token,
+            settings.SECRET_KEY,
+            algorithms=settings.TOKEN_ALGORITHM
+        )
+    except jwt.JWTError:
+        raise HTTPException(status_code=403, detail='Token has expired')
 
     if payload['scope'] != 'registration':
         raise invalid_token_error
@@ -57,7 +61,7 @@ async def verify(token: str):
         raise invalid_token_error
 
     if user.is_active:
-        raise HTTPException(status_code=403, detail="User already activated")
+        raise HTTPException(status_code=403, detail='User already activated')
 
     user.confirmation = None
     user.is_active = True
